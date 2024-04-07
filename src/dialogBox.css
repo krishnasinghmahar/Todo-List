@@ -1,0 +1,40 @@
+ 
+ 
+ dialog {
+     width: 300px;
+     padding: 20px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     background-color: #f9f9f9;
+ }
+
+ dialog input{
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 80%;
+ }
+
+ dialog button{
+    width: 49%;
+    padding: 10px;
+ }
+
+ dialog #submit{
+    background-color: greenyellow;
+ }
+
+ dialog #close-dialog{
+    background-color: rgb(243, 120, 120);
+ }
+
+ dialog select{
+    padding: 10px;
+    width: 50%;
+    margin-bottom: 20px;
+ }
+
+ dialog #task-detail{
+    width: 80%;
+    height: 100px;
+    margin-bottom: 10px;
+ }

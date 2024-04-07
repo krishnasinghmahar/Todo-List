@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 To-Do List </h1>
+        </header>
+        <aside>
+            <div>
+                <button id="inbox-btn">📥 Inbox</button>
+            </div>
+            <div>
+                <button id="today-btn">📅 Today</button>
+            </div>
+            <div>
+                <button id="this-week-btn">🗓️ This week</button>
+            </div>
+            <div>
+                <h2>Projects</h2>
+            </div>
+            <ul class="projects">
+                <li>Project 1</li>
+                <li>Project 2</li>
+                <li>Project 3</li>
+            </ul>
+            <div><button class="add-project">➕ Add Projects</button></div>
+        </aside>
+        <main>
+            <div class="main-header">
+                <h2 id="h2-tag">📥 Inbox</h2>
+                <p>3 Remaining Task</p>
+            </div>
+            <ul class="task">
+                <li><button> </button>
+                    <p>Task 1</p>
+                    <p class="description"> description</p>
+                    <p>due-date</p>
+                    <div class="components">
+                        <p>Details</p>
+                        <p>🖊️</p>
+                        <p>🗑️</p>
+                    </div>
+                </li>
+                <li><button> </button>
+                    <p>Task 2</p>
+                    <p class="description"> description</p>
+                    <p>due-date</p>
+                    <div class="components">
+                        <p>Details</p>
+                        <p>🖊️</p>
+                        <p>🗑️</p>
+                    </div>
+                </li>
+                <li><button> </button>
+                    <p>Task 3</p>
+                    <p class="description"> description</p>
+                    <p>due-date</p>
+                    <div class="components">
+                        <p>Details</p>
+                        <p>🖊️</p>
+                        <p>🗑️</p>
+                    </div>
+                </li>
+            </ul>
+            <div><button class="add-task">➕ Add Tasks</button></div>
+        </main>
+        <footer>
+            <h3>"Organize your chaos, accomplish your goals. One task at a time, one step closer to success."</h3>
+        </footer>
+        <dialog id="project-input">
+            <h2>Enter Project Name</h2>
+            <input type="text" id="project-name"  placeholder="Project-Name"><br>
+            <button id="submit">Submit</button>
+            <button id="close-dialog">Close</button>
+        </dialog>
+        <dialog id="task-input">
+            <h2>Enter Task Details</h2>
+            <input type="text" id="task-name"  placeholder="Task-Name"><br>
+            <textarea type="text" id="task-detail"  placeholder="description" ></textarea><br>
+
+            <select id="options" name="options" aria-placeholder="priority">
+                <option value="" disabled selected hidden>Priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select><br>
+            <label for="due-date">Due-date:</label>
+            <input type="date" id="due-date" name="due-date"><br>
+            <button id="submit-task">Submit</button>
+            <button id="close-task-dialog">Close</button>
+        </dialog>
+    </div>
+</body>
+
+</html>
