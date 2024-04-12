@@ -1,160 +1,175 @@
-body,
-html {
+* {
     margin: 0;
     padding: 0;
-    height: 100%;
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
 }
 
-button{
-    border-radius: 5px;
+body {
+    min-height: 100vh;
+    width: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    margin: 0 auto;
+    box-shadow: 0 0 15px;
 }
 
-button:hover{
+button:hover,
+input[type="checkbox"]:hover {
     cursor: pointer;
 }
+
 
 header {
-    box-shadow: 0 0 5px;
-    padding-left: 50px;
+    grid-column: 1/4;
+    font-size: 1.5rem;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-.container {
-    display: grid;
-    grid-template-rows: auto 1fr 50px;
-    grid-template-columns: 300px 1fr;
-    min-height: 100%;
+/* aside section */
+
+aside .btn-container {
+    margin: 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
-header,
-footer {
-    grid-column: 1 / span 3;
-    background-color: pink;
-}
+aside .btn-container button {
+    padding: 0.5rem;
+    box-shadow: 0 0 8px;
 
-/* aside */
+}
 
 aside {
-    grid-column: 1 / span 1;
-    background-color: lightblue;
-    padding: 20px;
+    grid-row: 2/3;
 }
 
-aside h2 {
-    font-size: 24px;
-    width: 80%;
-    margin-top: 10px;
-    margin-bottom: 0;
+
+
+/* main section */
+
+main {
+    grid-column: 2/4;
+    padding: 1rem;
 }
 
-.projects li {
-    padding: 10px;
+main h2 {
+    padding: .5rem;
+    margin-bottom: 20px;
+}
+
+ul {
     list-style: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
 }
 
-.projects li:hover{
-    cursor: pointer;
-    background-color:rgba(0, 0, 0, 0.1);
+main li {
+    padding: .5rem;
+    margin: .5rem;
+    box-shadow: 0 0 3px;
+    background-color: antiquewhite;
 }
 
-aside div {
+main .task-list-container {
+    box-shadow: 0 0 8px;
+    padding: 1rem;
+}
+
+main .add.button.container {
     display: flex;
     justify-content: center;
 }
 
-aside div>button {
-    text-align: left;
-    font-weight: 600;
-    width: 100%;
-    padding: 10px;
-    padding-top: 10px;
-    padding-left: 40px;
-    font-size: 18px;
-    background: none;
-    border: none;
+main .add-task {
+    padding: .5rem;
+    margin: .5rem;
+    border-color: none;
+    width: 150px;
+    font-weight: bold;
+    box-shadow: 0 0 3px;
 }
 
-aside button .add-project {
-    margin: 0;
+.task-list-container .task {
+    display: flex;
+    gap: 0.5rem;
 }
 
-aside button:hover {
-    background-color: rgb(155, 192, 204);
+.task .task-title {
+    flex-grow: 1;
 }
+
+#info-icon:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* Task form */
+
+.task-form {
+    display: none;
+    flex-direction: column;
+    width: 40%;
+    justify-content: center;
+    align-content: center;
+    margin: 1rem auto;
+    gap: 0.5rem;
+}
+
+.task-form input,
+button {
+    padding: 0.5rem;
+}
+
+.task-form select {
+    padding: 0.5rem;
+}
+
+/* footer section */
 
 footer {
+    grid-column: 1/4;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
     text-align: center;
+    box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.5);
 }
 
-
-/* main */
-
-
-main button:hover {
-    background: rgba(128, 128, 128, 0.1);
-}
-
-main .add-task {
-    width: 100%;
-    text-align: left;
-    padding: 10px;
-    font-size: 18px;
-    background: none;
-    border: none;
-}
-
-main {
-    grid-column: 2 / span 1;
-    padding: 2% 10%;
-}
-
-.main-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-ul.task {
-    padding: 0;
-}
-
-.task li {
-    padding: 10px;
-    margin-bottom: 30px;
-    font-size: 16px;
-    list-style: none;
-    display: flex;
-    border: 1px solid rgb(250, 73, 103);
-    background-color: rgb(253, 211, 218);
-    border-radius: 10px;
-}
-
-.task li button {
-    width: 20px;
-    height: 20px;
-    border: 1px solid;
-    border-radius: 50%;
-    margin-right: 5px;
-    justify-self: center;
-    align-self: center;
-}
-
-.task li p{
-    margin: 0;  
-    margin-right: 10px;
-}
-
-.description{
-    flex-grow: 1;
-    text-align: center;
-}
-
-.components{
-    display: flex;
-}
-
-.components p:hover{
+.task #trash-can-task:hover {
     cursor: pointer;
+    transform: scale(1.2);
+}
+
+/* js added class */
+
+.completed {
+    opacity: 0.3;
+}
+
+.low {
+    background-color: lightgreen;
+}
+
+.medium {
+    background-color: rgb(248, 248, 52);
+}
+
+.high {
+    background-color: lightcoral;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    background-color: #fefefe;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1;
+}
+
+.popup-content {
+    display: block;
+    width: 200px;
 }
