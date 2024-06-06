@@ -1,5 +1,0 @@
-import './style.css'
-import './projects.css'
-import './projectSection.js'
-import './task.js'
-import './data.js'
