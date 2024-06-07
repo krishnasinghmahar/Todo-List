@@ -1,5 +1,5 @@
 import { projects } from "./data.js";
-import { tasks } from "./data.js";
+import { allTask } from "./data.js";
 
 
 function renderProjectHtml() {
@@ -22,7 +22,7 @@ function renderProjectHtml() {
 }
 
 
-function renderTaskHtml() {
+function renderTaskHtml(tasks) {
   let taskHTML = '';
 
   tasks.forEach((task) => {
@@ -82,7 +82,26 @@ function toggleTaskHeading(button) {
   `
 }
 
+function renderProjectTask() {
+  document.querySelector('.project-list-container').addEventListener('click', (event) => {
+    const button = event.target.closest('.btn-container');
+    const btnName = button.querySelector('.btn-name').textContent.trim();
+    projects.forEach(project => {
+      if (project.name === btnName) {
+        renderTaskHtml(project.tasks);
+      }
+    })
+  });
+}
+
+function renderInbox() {
+  document.querySelector('.js-inbox-btn').addEventListener('click', () => {
+    renderTaskHtml(allTask);
+  })
+}
 
 renderProjectHtml();
-renderTaskHtml();
+renderTaskHtml(allTask);
 toggleBtnClass();
+renderProjectTask();
+renderInbox();
