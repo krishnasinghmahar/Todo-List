@@ -11,7 +11,7 @@ function renderProjectHtml() {
       <span class="material-symbols-outlined">
         fact_check
       </span>
-      <span>
+      <span class="btn-name">
         ${project.name}
       </span>
     </div>
@@ -21,7 +21,6 @@ function renderProjectHtml() {
   document.querySelector('.project-list-container').innerHTML = projectHTML;
 }
 
-renderProjectHtml();
 
 function renderTaskHtml() {
   let taskHTML = '';
@@ -54,11 +53,36 @@ function renderTaskHtml() {
   document.querySelector('.task-container').innerHTML = taskHTML;
 }
 
-renderTaskHtml();
 
-document.querySelectorAll('.btn-container').forEach((button) => {
-  button.addEventListener('click', () => {
-    button.classList.add('btn-clicked');
-    console.log(button);
+function toggleBtnClass() {
+  document.querySelectorAll('.btn-container').forEach((button) => {
+    button.addEventListener('click', () => {
+
+      document.querySelectorAll('.btn-container').forEach((btn) => {
+        btn.classList.remove('btn-clicked');
+      });
+
+      button.classList.add('btn-clicked');
+      toggleTaskHeading(button);
+    })
   })
-})
+}
+
+
+function toggleTaskHeading(button) {
+  const taskHeading = document.querySelector('.task-heading');
+  const btnName = button.querySelector('.btn-name').textContent;
+  const btnIcon = button.querySelector('.material-symbols-outlined').textContent;
+
+  taskHeading.innerHTML = `
+    <span class="material-symbols-outlined">
+      ${btnIcon}
+    </span>
+    <h1>${btnName}</h1>
+  `
+}
+
+
+renderProjectHtml();
+renderTaskHtml();
+toggleBtnClass();
