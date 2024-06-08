@@ -1,0 +1,26 @@
+/* project-form */
+
+.project-form {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+
+.project-form input {
+  width: 90%;
+  height: 2rem;
+  margin-bottom: .5rem;
+  font-size: 1.3rem;
+}
+
+.project-form div {
+  width: 90%;
+}
+
+.project-form button {
+  height: 2rem;
+  width: 49%;
+}

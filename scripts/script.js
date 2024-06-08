@@ -1,8 +1,8 @@
-import { projects } from "./data.js";
-import { allTask } from "./data.js";
+import { projects,allTask } from "./data.js";
+import { projectForm } from "./forms.js";
 
 
-function renderProjectHtml() {
+export function renderProjectHtml() {
   let projectHTML = '';
 
   projects.forEach((project) => {
@@ -20,7 +20,6 @@ function renderProjectHtml() {
 
   document.querySelector('.project-list-container').innerHTML = projectHTML;
 }
-
 
 function renderTaskHtml(tasks) {
   let taskHTML = '';
@@ -53,8 +52,7 @@ function renderTaskHtml(tasks) {
   document.querySelector('.task-container').innerHTML = taskHTML;
 }
 
-
-function toggleBtnClass() {
+export function toggleBtnClass() {
   document.querySelectorAll('.btn-container').forEach((button) => {
     button.addEventListener('click', () => {
 
@@ -67,7 +65,6 @@ function toggleBtnClass() {
     })
   })
 }
-
 
 function toggleTaskHeading(button) {
   const taskHeading = document.querySelector('.task-heading');
@@ -105,3 +102,6 @@ renderTaskHtml(allTask);
 toggleBtnClass();
 renderProjectTask();
 renderInbox();
+
+// project-form
+projectForm();

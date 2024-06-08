@@ -1,3 +1,5 @@
+import { renderProjectHtml, toggleBtnClass } from "./script.js"
+
 export const projects = [{
   name: 'Project 1',
   tasks: [{
@@ -34,6 +36,16 @@ export const projects = [{
     name: 'Task 9'
   }]
 }]
+
+
+export function pushProject(name) {
+  projects.push({
+    name: name,
+    tasks: []
+  })
+  renderProjectHtml();
+  toggleBtnClass();
+}
 
 
 export const allTask = []
