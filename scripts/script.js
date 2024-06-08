@@ -1,5 +1,5 @@
-import { projects,allTask } from "./data.js";
-import { projectForm } from "./forms.js";
+import { projects, allTask, inboxTask } from "./data.js";
+import { projectForm } from "./data.js";
 
 
 export function renderProjectHtml() {
@@ -93,15 +93,53 @@ function renderProjectTask() {
 
 function renderInbox() {
   document.querySelector('.js-inbox-btn').addEventListener('click', () => {
-    renderTaskHtml(allTask);
+    renderTaskHtml(inboxTask);
   })
 }
 
-renderProjectHtml();
-renderTaskHtml(allTask);
-toggleBtnClass();
-renderProjectTask();
-renderInbox();
+function showCloseTaskForm() {
+  const taskForm = document.querySelector('.add-task-form');
+  const addTaskBtn = document.querySelector('.add-task-btn');
+  const input = taskForm.querySelector('input');
+  const addBtn = taskForm.querySelector('.add-btn');
+  const cancelBtn = taskForm.querySelector('.cancel-btn');
 
-// project-form
-projectForm();
+  addTaskBtn.addEventListener('click', () => {
+    taskForm.style.display = 'flex';
+    addTaskBtn.style.display = 'none';
+  })
+
+  addBtn.addEventListener('click', () => {
+    if (input.value === '') {
+      alert('Enter the Task Name !!!');
+      return;
+    }
+
+    console.log(input.value);
+
+    taskForm.style.display = 'none';
+    addTaskBtn.style.display = 'flex';
+    input.value = '';
+  })
+
+  cancelBtn.addEventListener('click', () => {
+    taskForm.style.display = 'none';
+    addTaskBtn.style.display = 'flex';
+    input.value = '';
+  })
+
+}
+
+function runFunctions() {
+  renderProjectHtml();
+  renderTaskHtml(inboxTask);
+  toggleBtnClass();
+  renderProjectTask();
+  renderInbox();
+  showCloseTaskForm();
+
+  // project-form
+  projectForm();
+}
+
+runFunctions()

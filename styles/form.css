@@ -24,3 +24,31 @@
   height: 2rem;
   width: 49%;
 }
+
+/* add task form */
+
+.add-task-form {
+  display: none;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  padding: .5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.add-task-form input {
+  width: 15rem;
+  height: 2rem;
+  margin-bottom: .5rem;
+  font-size: 1.3rem;
+}
+
+.add-task-form div {
+  width: 15rem;
+}
+
+.add-task-form button {
+  height: 2rem;
+  width: 49%;
+}
