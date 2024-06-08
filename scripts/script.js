@@ -1,5 +1,4 @@
-import { projects, allTask, inboxTask } from "./data.js";
-import { projectForm } from "./data.js";
+import { projects, allTask, inboxTask, pushProject, pushTaskInbox } from "./data.js";
 
 
 export function renderProjectHtml() {
@@ -97,7 +96,42 @@ function renderInbox() {
   })
 }
 
-function showCloseTaskForm() {
+export function projectForm() {
+
+  const form = document.querySelector('.project-form');
+  const addProjectBtn = document.querySelector('.add-project-btn');
+  const addBtn = form.querySelector('.add-btn');
+  const cancelBtn = form.querySelector('.cancel-btn');
+  const input = form.querySelector('input');
+
+  addProjectBtn.addEventListener('click', () => {
+    form.style.display = 'flex';
+    addProjectBtn.style.display = 'none';
+  })
+
+  cancelBtn.addEventListener('click', () => {
+    addProjectBtn.style.display = 'flex';
+    form.style.display = 'none';
+    input.value = '';
+  })
+
+  addBtn.addEventListener('click', () => {
+    if (input.value === '') {
+      alert('Enter the name of the Project !!!');
+      return;
+    }
+
+    pushProject(input.value);
+    renderProjectHtml();
+    toggleBtnClass();
+
+    addProjectBtn.style.display = 'flex';
+    form.style.display = 'none';
+    input.value = '';
+  })
+}
+
+function taskForm() {
   const taskForm = document.querySelector('.add-task-form');
   const addTaskBtn = document.querySelector('.add-task-btn');
   const input = taskForm.querySelector('input');
@@ -115,7 +149,8 @@ function showCloseTaskForm() {
       return;
     }
 
-    console.log(input.value);
+    pushTaskInbox(input.value);
+    renderTaskHtml(inboxTask);
 
     taskForm.style.display = 'none';
     addTaskBtn.style.display = 'flex';
@@ -136,10 +171,8 @@ function runFunctions() {
   toggleBtnClass();
   renderProjectTask();
   renderInbox();
-  showCloseTaskForm();
-
-  // project-form
   projectForm();
+  taskForm();
 }
 
 runFunctions()
