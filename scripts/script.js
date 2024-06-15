@@ -1,7 +1,7 @@
-import { projects, allTask, inboxTask, pushProject, pushTaskInbox } from "./data.js";
+import { projects, allTask, pushProject, pushTaskProject } from "./data.js";
 
 
-export function renderProjectHtml() {
+function renderProjectHtml() {
   let projectHTML = '';
 
   projects.forEach((project) => {
@@ -51,7 +51,7 @@ function renderTaskHtml(tasks) {
   document.querySelector('.task-container').innerHTML = taskHTML;
 }
 
-export function toggleBtnClass() {
+function toggleBtnClass() {
   document.querySelectorAll('.btn-container').forEach((button) => {
     button.addEventListener('click', () => {
 
@@ -90,13 +90,13 @@ function renderProjectTask() {
   });
 }
 
-function renderInbox() {
+function renderAllTasks() {
   document.querySelector('.js-inbox-btn').addEventListener('click', () => {
-    renderTaskHtml(inboxTask);
+    renderTaskHtml(allTask);
   })
 }
 
-export function projectForm() {
+function projectForm() {
 
   const form = document.querySelector('.project-form');
   const addProjectBtn = document.querySelector('.add-project-btn');
@@ -124,6 +124,7 @@ export function projectForm() {
     pushProject(input.value);
     renderProjectHtml();
     toggleBtnClass();
+    renderSelectOptions();
 
     addProjectBtn.style.display = 'flex';
     form.style.display = 'none';
@@ -131,10 +132,22 @@ export function projectForm() {
   })
 }
 
+function renderSelectOptions() {
+  const select = document.querySelector('#task-project-select')
+  select.innerHTML = '<option value="" disabled selected>Select a Project</option>';
+  projects.forEach((project) => {
+    const option = document.createElement('option');
+    option.value = project.name;
+    option.text = project.name;
+    select.appendChild(option);
+  })
+}
+
 function taskForm() {
   const taskForm = document.querySelector('.add-task-form');
   const addTaskBtn = document.querySelector('.add-task-btn');
   const input = taskForm.querySelector('input');
+  const select = taskForm.querySelector('select');
   const addBtn = taskForm.querySelector('.add-btn');
   const cancelBtn = taskForm.querySelector('.cancel-btn');
 
@@ -144,35 +157,46 @@ function taskForm() {
   })
 
   addBtn.addEventListener('click', () => {
+    const clicked = document.querySelector('.btn-clicked');
+
     if (input.value === '') {
       alert('Enter the Task Name !!!');
       return;
     }
 
-    pushTaskInbox(input.value);
-    renderTaskHtml(inboxTask);
+    if (select.value === '') {
+      alert('Select the Project !!!');
+      return;
+    }
+
+    pushTaskProject(input.value, select.value);
+    clicked.click();
 
     taskForm.style.display = 'none';
     addTaskBtn.style.display = 'flex';
     input.value = '';
+    select.value = '';
   })
 
   cancelBtn.addEventListener('click', () => {
     taskForm.style.display = 'none';
     addTaskBtn.style.display = 'flex';
     input.value = '';
+    select.value = '';
   })
 
 }
 
 function runFunctions() {
+
   renderProjectHtml();
-  renderTaskHtml(inboxTask);
+  renderTaskHtml(allTask);
   toggleBtnClass();
   renderProjectTask();
-  renderInbox();
+  renderAllTasks();
   projectForm();
   taskForm();
+  renderSelectOptions();
 }
 
 runFunctions()

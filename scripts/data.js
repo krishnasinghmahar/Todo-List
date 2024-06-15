@@ -1,5 +1,3 @@
-import { renderProjectHtml, toggleBtnClass } from "./script.js"
-
 export const projects = [{
   name: 'Project 1',
   tasks: [{
@@ -37,16 +35,6 @@ export const projects = [{
   }]
 }]
 
-export const inboxTask = [{
-  name: 'Inbox Task 1'
-},
-{
-  name: 'Inbox Task 2'
-},
-{
-  name: 'Inbox Task 3'
-}]
-
 export function pushProject(name) {
   projects.push({
     name: name,
@@ -54,14 +42,20 @@ export function pushProject(name) {
   })
 }
 
-export function pushTaskInbox(name) {
-  inboxTask.push({ name });
+export function pushTaskProject(taskName, projectName) {
+  projects.forEach((project) => {
+    if (project.name === projectName) {
+      project.tasks.push({ name: taskName })
+    }
+  })
+  pushTask();
 }
 
 
-export const allTask = []
+export let allTask = []
 
 function pushTask() {
+  allTask = [];
   projects.forEach((project) => {
     project.tasks.forEach((task) => {
       allTask.push(task);
