@@ -1,4 +1,4 @@
-import "./components/ui"
+import "./scripts/UI"
 import './styles/index.css'
-
-console.log('hi')
+import './styles/aside.css'
+import './styles/main.css'

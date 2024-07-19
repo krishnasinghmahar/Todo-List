@@ -1,3 +1,42 @@
-h1{
-  color: red;
+:root {
+  --bgColor1: #15202b;
+  --bgColor2: #192734;
+  --bgColor3: #22303c;
+  --bgColorPopUp: #273746;
+  --textColor: #eaebec;
+  --accent: #2abd67;
+  --accentDark: #1f8d4d;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-rows: 85px auto 40px;
+  height: 100vh;
+}
+
+header {
+  grid-column: 1/span 2;
+}
+
+header h1 {
+  background-color: var(--bgColor3);
+  color: var(--accent);
+  font-size: 3rem;
+  padding: 1rem;
+}
+
+footer {
+  background-color: var(--bgColor3);
+  color: var(--textColor);
+  padding: .5rem;
+  grid-column: 1/span 2;
+  text-align: center;
+  font-weight: bold;
 }

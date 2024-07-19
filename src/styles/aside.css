@@ -1,0 +1,51 @@
+aside {
+  background-color: var(--bgColor1);
+  color: var(--textColor);
+  padding: 2rem;
+}
+
+aside img{
+  width: 30px;
+}
+
+aside .button-container{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+aside .button-container div{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  padding: .3rem;
+  border-radius: 5px;
+}
+
+aside .button-container div:hover{
+  background-color: gray;
+}
+
+aside h2{
+  margin-bottom: 1rem;
+}
+
+aside .project-container{
+  display: flex;
+  flex-direction: column;
+}
+
+aside .project-container div{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.3rem;
+  border-radius: 5px;
+  padding-left: 1rem;
+}
+
+aside .project-container div:hover{
+  cursor: pointer;
+  background-color: grey;
+}
