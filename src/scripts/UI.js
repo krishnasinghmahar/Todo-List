@@ -1,12 +1,13 @@
 import allTaskIcon from '../icons/inbox.png'
 import todayIcon from '../icons/today1.png'
 import thisWeekIcon from '../icons/week2.png'
-import { projects } from './data'
+import { projects,allTasks } from './data'
 
 const allTaskButton = document.querySelector('.all-task-button')
 const todayButton = document.querySelector('.today-button')
 const thisWeekButton = document.querySelector('.this-week-button')
 const projectContainer = document.querySelector('.project-container')
+const taskContainer = document.querySelector('.task-container')
 
 allTaskButton.innerHTML = `
   <img src=${allTaskIcon}>
@@ -23,12 +24,37 @@ thisWeekButton.innerHTML = `
   <h3>This week</h3>
 `
 
-projectContainer.innerHTML = ''
-projects.forEach(project=>{
-  projectContainer.innerHTML += `
-      <div>
+function renderProjectContainer() {
+  projectContainer.innerHTML = ''
+  projects.forEach(project => {
+    projectContainer.innerHTML += `
+      <div class="gp-tasks">
         <i class="fa-solid fa-list"></i>
-        <h3>${project.name}</h3>
+        <h3>${project.projectName}</h3>
       </div>
   `
-})
+  })
+}
+
+function renderTaskContainer(tasks) {
+  taskContainer.innerHTML = ''
+  tasks.forEach(task => {
+    taskContainer.innerHTML += `
+    <div class="task">
+      <div class="task-name">
+        <input type="checkbox">
+        <p>${task.taskName}</p>
+      </div>
+      <div class="task-buttons">
+        <i class="fa-solid fa-circle-info"></i>
+        <p class="due-date">20 july</p>
+        <i class="fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+    </div>
+  `
+  })
+}
+
+renderTaskContainer(allTasks)
+renderProjectContainer()
