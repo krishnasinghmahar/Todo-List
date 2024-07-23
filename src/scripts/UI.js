@@ -7,7 +7,7 @@ const allTaskButton = document.querySelector('.all-task-button')
 const todayButton = document.querySelector('.today-button')
 const thisWeekButton = document.querySelector('.this-week-button')
 const projectContainer = document.querySelector('.project-container')
-const taskContainer = document.querySelector('.task-container')
+export const taskContainer = document.querySelector('.task-container')
 
 allTaskButton.innerHTML = `
   <img src=${allTaskIcon}>
@@ -28,7 +28,7 @@ function renderProjectContainer() {
   projectContainer.innerHTML = ''
   projects.forEach(project => {
     projectContainer.innerHTML += `
-      <div class="gp-tasks">
+      <div class="project gp-tasks">
         <i class="fa-solid fa-list"></i>
         <h3>${project.projectName}</h3>
       </div>
@@ -36,7 +36,7 @@ function renderProjectContainer() {
   })
 }
 
-function renderTaskContainer(tasks) {
+export function renderTaskContainer(tasks) {
   taskContainer.innerHTML = ''
   tasks.forEach(task => {
     taskContainer.innerHTML += `
