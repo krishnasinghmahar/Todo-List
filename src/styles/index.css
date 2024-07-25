@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 :root {
   --bgColor1: #15202b;
   --bgColor2: #192734;
@@ -12,6 +14,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: "Roboto Mono", monospace, sans-serif;
 }
 
 body {

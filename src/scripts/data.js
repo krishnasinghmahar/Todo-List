@@ -7,9 +7,6 @@ export const projects = [
       },
       {
         taskName: 'Task 2'
-      },
-      {
-        taskName: 'Task 3'
       }
     ]
   },
@@ -17,13 +14,10 @@ export const projects = [
     projectName: 'Project 2',
     tasks: [
       {
+        taskName: 'Task 3'
+      },
+      {
         taskName: 'Task 4'
-      },
-      {
-        taskName: 'Task 5'
-      },
-      {
-        taskName: 'Task 6'
       }
     ]
   },
@@ -31,13 +25,10 @@ export const projects = [
     projectName: 'Project 3',
     tasks: [
       {
-        taskName: 'Task 7'
+        taskName: 'Task 5'
       },
       {
-        taskName: 'Task 8'
-      },
-      {
-        taskName: 'Task 9'
+        taskName: 'Task 6'
       }
     ]
   }
@@ -45,4 +36,8 @@ export const projects = [
 
 export const allTasks = []
 
-projects.forEach(project => project.tasks.forEach(task => allTasks.push(task)))
+function pushToAllTasks() {
+  projects.forEach(project => project.tasks.forEach(task => allTasks.push(task)))
+}
+
+pushToAllTasks()

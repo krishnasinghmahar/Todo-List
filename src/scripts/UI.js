@@ -1,13 +1,23 @@
 import allTaskIcon from '../icons/inbox.png'
 import todayIcon from '../icons/today1.png'
 import thisWeekIcon from '../icons/week2.png'
-import { projects,allTasks } from './data'
+import { projects, allTasks } from './data'
+import './form'
 
 const allTaskButton = document.querySelector('.all-task-button')
 const todayButton = document.querySelector('.today-button')
 const thisWeekButton = document.querySelector('.this-week-button')
 const projectContainer = document.querySelector('.project-container')
 export const taskContainer = document.querySelector('.task-container')
+const addTaskButton = document.querySelector('main .add-task');
+
+export function hideAddTaskButton() {
+  addTaskButton.style.display = 'none'
+}
+
+export function showAddTaskButton() {
+  addTaskButton.style.display = 'flex'
+}
 
 allTaskButton.innerHTML = `
   <img src=${allTaskIcon}>
@@ -56,5 +66,8 @@ export function renderTaskContainer(tasks) {
   })
 }
 
+
+
 renderTaskContainer(allTasks)
 renderProjectContainer()
+hideAddTaskButton()

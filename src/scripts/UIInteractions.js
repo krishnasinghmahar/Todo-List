@@ -1,5 +1,5 @@
 import { projects, allTasks } from "./data";
-import { renderTaskContainer, taskContainer } from "./UI";
+import { renderTaskContainer, taskContainer, hideAddTaskButton, showAddTaskButton } from "./UI";
 
 const gpAsideButtons = document.querySelectorAll('.gp-tasks');
 const gpProjectButtons = document.querySelectorAll('.project');
@@ -18,21 +18,24 @@ gpAsideButtons.forEach(element => {
 
 gpAsideButtons[0].addEventListener('click', () => {
   renderTaskContainer(allTasks)
+  hideAddTaskButton()
 })
 
 gpAsideButtons[1].addEventListener('click', () => {
   // Add the feature
   taskContainer.innerHTML = ''
+  hideAddTaskButton()
 })
 
 gpAsideButtons[2].addEventListener('click', () => {
   // Add the feature
   taskContainer.innerHTML = ''
+  hideAddTaskButton()
 })
-
 
 gpProjectButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
     renderTaskContainer(projects[index].tasks)
+    showAddTaskButton()
   })
 })
