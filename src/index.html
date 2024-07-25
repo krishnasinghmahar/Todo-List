@@ -49,6 +49,7 @@
   </aside>
 
   <main>
+
     <h1>All Tasks</h1>
     <div class="task-container">
 
@@ -56,8 +57,27 @@
     <button class="add-task"><span class="material-symbols-outlined">
         add_circle
       </span>
+
       Add Task
     </button>
+
+    <form class="add-task-form">
+      <input type="text" class="task-name" placeholder="Task name">
+      <textarea class="task-details" placeholder="Task details"></textarea>
+      <div class="task-about">
+        <input type="date" class="date">
+        <select class="priority">
+          <option disabled selected>Select Priority</option>
+          <option value="priority 1">Priority 1 </option>
+          <option value="priority 2">Priority 2 </option>
+          <option value="priority 3">Priority 3</option>
+        </select>
+      </div>
+      <div class="task-buttons">
+        <button class="cancel">Cancel</button>
+        <button class="submit">Submit</button>
+      </div>
+    </form>
   </main>
 
   <footer>
