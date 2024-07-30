@@ -1,5 +1,9 @@
-export const projects = [
+import { v4 as uuidv4 } from 'uuid';
+import { renderTaskContainer } from './main';
+
+const projects = [
   {
+    id: uuidv4(),
     projectName: 'Project 1',
     tasks: [
       {
@@ -11,6 +15,7 @@ export const projects = [
     ]
   },
   {
+    id: uuidv4(),
     projectName: 'Project 2',
     tasks: [
       {
@@ -22,6 +27,7 @@ export const projects = [
     ]
   },
   {
+    id: uuidv4(),
     projectName: 'Project 3',
     tasks: [
       {
@@ -34,10 +40,31 @@ export const projects = [
   }
 ]
 
-export const allTasks = []
+let allTasks = []
 
 function pushToAllTasks() {
+  allTasks = []
   projects.forEach(project => project.tasks.forEach(task => allTasks.push(task)))
 }
 
+function pushProject(projectName) {
+  projects.push({
+    id: uuidv4(),
+    projectName: projectName,
+    tasks: []
+  })
+}
+
+function pushTask(taskName, projectId) {
+  projects.forEach(project => {
+    if (project.id === projectId) {
+      project.tasks.push({ taskName: taskName })
+      renderTaskContainer(project.tasks)
+    }
+  })
+  pushToAllTasks()
+}
+
 pushToAllTasks()
+
+export { projects, allTasks, pushProject, pushTask }
