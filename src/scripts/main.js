@@ -8,6 +8,7 @@ const taskName = addTaskForm.querySelector('.task-name')
 const taskDetails = addTaskForm.querySelector('.task-details')
 const taskDate = addTaskForm.querySelector('.date')
 const taskPriority = addTaskForm.querySelector('.priority')
+const cancelTaskForm = addTaskForm.querySelector('.cancel')
 
 // UI
 
@@ -18,13 +19,13 @@ function renderTaskContainer(tasks) {
     <div class="task">
       <div class="task-name">
         <input type="checkbox">
-        <p>${task.taskName}</p>
+        <p>${task.name}</p>
       </div>
       <div class="task-buttons">
-        <i class="fa-solid fa-circle-info"></i>
-        <p class="due-date">20 july</p>
-        <i class="fa-solid fa-pen-to-square"></i>
-        <i class="fa-solid fa-trash-can"></i>
+        <i class="fa-solid fa-circle-info hover"></i>
+        <p class="due-date">${task.date}</p>
+        <i class="fa-solid fa-pen-to-square hover"></i>
+        <i class="fa-solid fa-trash-can hover"></i>
       </div>
     </div>
   `
@@ -66,10 +67,7 @@ addTaskForm.addEventListener('submit', (e) => {
   e.preventDefault()
   const activeClass = document.querySelector('.active');
   const projectId = activeClass.dataset.id;
-  pushTask(taskName.value, projectId)
-  console.log(taskDetails.value);
-  console.log(taskDate.value);
-  console.log(taskPriority.value);
+  pushTask(taskName.value, taskDate.value, taskPriority.value, taskDetails.value, projectId)
 
   resetTaskForm()
 })
@@ -79,6 +77,13 @@ addTaskForm.addEventListener('keydown', (e) => {
     e.preventDefault()
   }
 });
+
+cancelTaskForm.addEventListener('click', (e) => {
+  e.preventDefault()
+  showAddTaskButton()
+  hideAddTaskForm()
+  resetTaskForm()
+})
 
 function runMain() {
   renderTaskContainer(allTasks)

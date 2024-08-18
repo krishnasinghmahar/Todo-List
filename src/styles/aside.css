@@ -41,16 +41,21 @@ aside .project-container {
   margin-bottom: .5rem;
 }
 
-aside .project-container div {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 5px;
-  padding-left: 1rem;
+aside .project-name {
+  flex: 1;
 }
 
-aside .project-container div:hover {
+aside .project-container .project {
+  display: flex;
+  gap: 1rem;
+  height: 2.4rem;
+  align-items: center;
+  padding: 0.4rem;
+  border-radius: 3px;
+  padding-left: .5rem;
+}
+
+aside .project-container .project:hover {
   cursor: pointer;
   background-color: var(--hover);
 }
@@ -79,15 +84,27 @@ aside .add-project:hover {
   background-color: var(--hover);
 }
 
+.project .hover {
+  display: none;
+}
+
+.project:hover .hover {
+  display: block;
+}
+
+.project .project-btn {
+  display: flex;
+}
+
 /* form */
 
-aside .add-project-form{
-  border: grey 2px ridge ;
+aside .add-project-form {
+  border: grey 2px ridge;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: .3rem;
 }
 
-aside .add-project-form input{
+aside .add-project-form input {
   width: 100%;
   color: white;
   background-color: rgba(255, 255, 255, 0.1);
@@ -98,15 +115,15 @@ aside .add-project-form input{
   margin-bottom: .5rem;
 }
 
-aside .add-project-form input:hover{
+aside .add-project-form input:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-aside .add-project-form input:focus{
+aside .add-project-form input:focus {
   outline: none;
 }
 
-aside .add-project-form button{
+aside .add-project-form button {
   width: 47.8%;
   height: 1.8rem;
   border: none;
@@ -116,18 +133,73 @@ aside .add-project-form button{
   color: var(--textColor);
 }
 
-aside .add-project-form .cancel{
+aside .add-project-form .cancel {
   background-color: rgba(190, 0, 0, 0.8);
 }
 
-aside .add-project-form .submit{
+aside .add-project-form .submit {
   background-color: rgba(1, 198, 1, 0.8);
 }
 
-aside .add-project-form .cancel:hover{
+aside .add-project-form .cancel:hover {
   background-color: rgba(190, 0, 0, 1);
 }
 
-aside .add-project-form .submit:hover{
+aside .add-project-form .submit:hover {
+  background-color: rgba(1, 198, 1, 1);
+}
+
+/* rename form */
+
+.project {
+  position: relative;
+  display: inline-block;
+}
+
+.drop-up .rename-form {
+  display: none;
+  position: absolute;
+  padding: .2rem;
+  bottom: 35px;
+  right: -5rem;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.drop-up .show {
+  display: block;
+}
+
+.rename-form input {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.rename-form .btn-container{
+  width: 100%;
+}
+
+.rename-form .btn-container button {
+  width: 47.5%;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.rename-form .btn-container .cancel {
+  background-color: rgba(190, 0, 0, 0.8);
+}
+
+.rename-form .btn-container .submit {
+  background-color: rgba(1, 198, 1, 0.8);
+}
+
+.rename-form .btn-container .cancel:hover {
+  background-color: rgba(190, 0, 0, 1);
+}
+
+.rename-form .btn-container .submit:hover {
   background-color: rgba(1, 198, 1, 1);
 }
