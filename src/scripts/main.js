@@ -17,10 +17,11 @@ function renderTaskContainer(tasks) {
   tasks.forEach(task => {
     taskContainer.innerHTML += `
     <div class="task" data-task-id=${task.id}>
-      <div class="task-name">
+      <label class="custom-checkbox">
         <input type="checkbox">
+        <span class="checkMark"></span>
         <p>${task.name}</p>
-      </div>
+      </label>
       <div class="task-buttons">
         <i class="fa-solid fa-circle-info hover"></i>
         <p class="due-date">${task.date}</p>

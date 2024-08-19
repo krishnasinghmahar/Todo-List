@@ -144,3 +144,51 @@ main .add-task-form .cancel:hover {
 main .add-task-form .submit:hover {
   background-color: rgba(1, 198, 1, 1);
 }
+
+/* styling input[checkbox] */
+
+.custom-checkbox {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox .checkMark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border: 2px solid #ccc;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkMark {
+  background-color: #3df321;
+  border-color: #40f324;
+}
+
+.custom-checkbox .checkMark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkMark::after {
+  display: block;
+}
+
+.custom-checkbox .checkMark::after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
