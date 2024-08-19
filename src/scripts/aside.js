@@ -245,6 +245,7 @@ function handleCancelProjectForm(e) {
 
 function handleSubmitBtn(e) {
   if (e.key === 'Enter') {
+    e.preventDefault()
     const submitBtn = formAddProject.querySelector('.submit')
     submitBtn.click()
   }

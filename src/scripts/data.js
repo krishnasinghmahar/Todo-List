@@ -7,16 +7,20 @@ const projects = [
     name: 'Project 1',
     tasks: [
       {
+        id: uuidv4(),
         name: 'Task 1',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       },
       {
+        id: uuidv4(),
         name: 'Task 2',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       }
     ]
   },
@@ -25,16 +29,20 @@ const projects = [
     name: 'Project 2',
     tasks: [
       {
+        id: uuidv4(),
         name: 'Task 3',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       },
       {
+        id: uuidv4(),
         name: 'Task 4',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       }
     ]
   },
@@ -43,16 +51,20 @@ const projects = [
     name: 'Project 3',
     tasks: [
       {
+        id: uuidv4(),
         name: 'Task 5',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       },
       {
+        id: uuidv4(),
         name: 'Task 6',
         details: 'something...',
         date: '30 july',
-        priority: 'low'
+        priority: 'low',
+        taskDone: false
       }
     ]
   }
@@ -82,29 +94,53 @@ function removeProject(projectId) {
 }
 
 function pushTask(taskName, taskDate, taskPriority, taskDetails, projectId) {
+  if (taskDate === '') {
+    taskDate = 'no date'
+  }
   projects.forEach(project => {
     if (project.id === projectId) {
       project.tasks.push({
+        id: uuidv4(),
         name: taskName,
         details: taskDetails,
         date: taskDate,
-        priority: taskPriority
+        priority: taskPriority,
+        taskDone: false
       })
       renderTaskContainer(project.tasks)
     }
   })
-  console.log(projects)
   pushToAllTasks()
+}
+
+function findProject(projectId) {
+  let returnObject
+  projects.map(project => {
+    if (project.id === projectId) {
+      returnObject =  project
+    }
+  })
+  return returnObject
 }
 
 function renameProject(newName, projectId) {
   projects.forEach(project => {
-    if(project.id === projectId){
-      project.name =  newName
+    if (project.id === projectId) {
+      project.name = newName
     }
   })
 }
 
+function deleteTask(taskId) {
+  projects.forEach(project => {
+    const taskIndex = project.tasks.findIndex(task => task.id === taskId)
+    if (taskIndex !== -1) {
+      project.tasks.splice(taskIndex, 1)
+    }
+  })
+  pushToAllTasks()
+}
+
 pushToAllTasks()
 
-export { projects, allTasks, pushProject, pushTask, removeProject,renameProject }
+export { projects, allTasks, pushProject, pushTask, removeProject, renameProject, deleteTask, findProject }
