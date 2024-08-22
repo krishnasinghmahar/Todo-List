@@ -14,11 +14,9 @@ main h1 {
 main .task {
   display: flex;
   justify-content: space-between;
-  border: green solid 1px;
   border-radius: .5rem;
   padding: .5rem;
   font-size: 1.2rem;
-  border-left: green solid 1rem;
 }
 
 main .task .task-name {
@@ -79,7 +77,7 @@ main .add-task-form {
 }
 
 main .task-name,
-textarea {
+.task-details {
   border: none;
   background-color: transparent;
   color: var(--textColor);
@@ -87,7 +85,7 @@ textarea {
 
 input:focus,
 select:focus,
-textarea:focus {
+.task-details:focus {
   outline: none;
 }
 
@@ -129,20 +127,29 @@ main .add-task-form .task-buttons button {
   color: var(--textColor);
 }
 
+.task-edit-dialog .button-container .cancel,
 main .add-task-form .cancel {
   background-color: rgba(190, 0, 0, 0.8);
 }
 
+.task-edit-dialog .button-container .submit,
 main .add-task-form .submit {
   background-color: rgba(1, 198, 1, 0.8);
 }
 
+.task-edit-dialog .button-container .cancel:hover,
 main .add-task-form .cancel:hover {
   background-color: rgba(190, 0, 0, 1);
 }
 
+.task-edit-dialog .button-container .submit:hover,
 main .add-task-form .submit:hover {
   background-color: rgba(1, 198, 1, 1);
+}
+
+.done-task {
+  opacity: .5;
+  text-decoration: line-through;
 }
 
 /* styling input[checkbox] */
@@ -191,4 +198,150 @@ main .add-task-form .submit:hover {
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+/* task priority colors */
+
+.red {
+  border: red solid 1px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: red solid 1rem;
+}
+
+.green {
+  border: green solid 1px;
+  background-color: rgba(0, 128, 0, 0.1);
+  border-left: green solid 1rem;
+}
+
+.yellow {
+  border: yellow solid 1px;
+  background-color: rgba(255, 255, 0, 0.1);
+  border-left: yellow solid 1rem;
+}
+
+.white {
+  border: white solid 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: white solid 1rem;
+}
+
+/* .task-details-dialog box */
+
+dialog {
+  position: fixed;
+  top: 35%;
+  left: 35%;
+  border: none;
+  color: white;
+  background-color: var(--bgColor2);
+  padding: 10px;
+  z-index: 1000;
+  border-radius: 4px;
+  width: 500px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+dialog {
+  animation: fade-out 0.7s ease-out;
+}
+
+dialog[open] {
+  animation: fade-in 0.7s ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.7s ease-out forwards;
+}
+
+/* Animation keyframes */
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+    display: block;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleY(0);
+    display: none;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background-color: rgb(0 0 0 / 0%);
+  }
+
+  100% {
+    background-color: rgb(0 0 0 / 25%);
+  }
+}
+
+dialog .dialog-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+dialog .dialog-heading button {
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  background-color: var(--bgColor2);
+  cursor: pointer;
+  color: white;
+}
+
+dialog .dialog-heading button:hover {
+  background-color: #cccccc15;
+}
+
+/* .task-edit-dialog */
+
+.task-edit-dialog .button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.task-edit-dialog .button-container button {
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 2px;
+  height: 1.5rem;
+  width: 4rem;
+  font-weight: bold;
+}
+
+.edit-details-label {
+  display: flex;
+  align-items: center;
+}
+
+.edit-details-label textarea {
+  margin-left: 10px;
+  height: 4rem;
+  flex-grow: 1;
+}
+
+.edit-task .edit-task-name{
+  width: 86%;
 }

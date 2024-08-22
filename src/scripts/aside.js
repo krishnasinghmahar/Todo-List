@@ -1,7 +1,7 @@
 import allTaskIcon from '../icons/inbox.png'
 import todayIcon from '../icons/today1.png'
 import thisWeekIcon from '../icons/week2.png'
-import { projects, pushProject, allTasks, removeProject, renameProject } from './data'
+import { projects, pushProject, allTasks, removeProject, renameProject, todayTasks, next7daysTasks, pushToAllTasks, pushToNext7DaysTasks, pushToTodayTasks } from './data'
 import { mainHeading, renderTaskContainer, hideAddTaskButton, taskContainer, showAddTaskButton, hideAddTaskForm } from './main'
 
 // selectors
@@ -33,7 +33,7 @@ function renderButtons() {
 
   thisWeekButton.innerHTML = `
     <img src=${thisWeekIcon}>
-    <h3>This week</h3>
+    <h3>Next 7 Days</h3>
   `
 }
 
@@ -112,19 +112,22 @@ function renderLastTask() {
 // All Click Events Functions
 
 function handleAllTaskBtn() {
+  pushToAllTasks()
   renderTaskContainer(allTasks)
   hideAddTaskButton()
   hideAddTaskForm()
 }
 
-function handleTodayBtn() {
-  taskContainer.innerHTML = ''
+function handleTodayBtn() { 
+  pushToTodayTasks()
+  renderTaskContainer(todayTasks)
   hideAddTaskButton()
   hideAddTaskForm()
 }
 
 function handleThisWeekBtn() {
-  taskContainer.innerHTML = ''
+  pushToNext7DaysTasks()
+  renderTaskContainer(next7daysTasks)
   hideAddTaskButton()
   hideAddTaskForm()
 }

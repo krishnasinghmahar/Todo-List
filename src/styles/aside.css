@@ -55,6 +55,12 @@ aside .project-container .project {
   padding-left: .5rem;
 }
 
+aside .project-container .project .project-name{
+  text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 aside .project-container .project:hover {
   cursor: pointer;
   background-color: var(--hover);
